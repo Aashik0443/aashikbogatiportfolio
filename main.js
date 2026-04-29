@@ -308,6 +308,43 @@ function setYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+/* ─── Mobile hamburger menu ─── */
+function initHamburger() {
+  const btn    = document.getElementById("nav-hamburger");
+  const drawer = document.getElementById("mobile-nav-drawer");
+  if (!btn || !drawer) return;
+
+  function openDrawer() {
+    btn.classList.add("open");
+    drawer.classList.add("open");
+    btn.setAttribute("aria-expanded", "true");
+    btn.setAttribute("aria-label", "Close menu");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    btn.classList.remove("open");
+    drawer.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Open menu");
+    document.body.style.overflow = "";
+  }
+
+  btn.addEventListener("click", () => {
+    btn.classList.contains("open") ? closeDrawer() : openDrawer();
+  });
+
+  // Close when any drawer link is tapped
+  drawer.querySelectorAll("[data-drawer-link]").forEach((link) => {
+    link.addEventListener("click", closeDrawer);
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
+  });
+}
+
 /* ─── Init all ─── */
 document.addEventListener("DOMContentLoaded", () => {
   initSpotlight();
@@ -318,5 +355,6 @@ document.addEventListener("DOMContentLoaded", () => {
   buildProjectList();
   initModal();
   initContactForm();
+  initHamburger();
   setYear();
 });
