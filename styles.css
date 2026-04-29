@@ -932,3 +932,339 @@ footer {
   z-index: 0;
   opacity: 0.8;
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — Full overhaul for screens ≤ 768px
+   ============================================================ */
+
+/* ─── Mobile Nav Hamburger ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--foreground);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 49;
+  background: color-mix(in oklab, var(--background) 97%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding-top: 5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+.mobile-nav-drawer.open {
+  display: flex;
+}
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-nav-link svg {
+  width: 1.5rem; height: 1.5rem;
+  color: var(--primary);
+  transition: transform 0.2s;
+}
+.mobile-nav-link:hover { color: var(--primary); }
+.mobile-nav-link:hover svg { transform: translate(3px,-3px); }
+
+.mobile-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 9999px;
+  padding: 1rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta       { display: none; }
+}
+
+/* ─── Hero – Mobile ─── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 5.5rem 1.25rem 3rem;
+    min-height: 100svh;
+    align-items: flex-start;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 16vw, 5.5rem);
+    margin-bottom: 0;
+    line-height: 0.88;
+  }
+  .hero-badge {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+  /* Hide the floating visual on small phones to avoid overlap */
+  .hero-visual {
+    display: none;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  /* Show a compact version of the visual on larger phones */
+  .hero-visual {
+    display: block;
+    min-height: 240px;
+    position: relative;
+  }
+  .hero-image-wrap {
+    position: relative;
+    width: 70%;
+    height: 240px;
+    margin: 0 auto;
+    border-radius: 9999px 9999px 0 0;
+  }
+  .hero-stat-card {
+    position: relative;
+    bottom: auto; left: auto;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+}
+
+/* ─── About Section – Mobile ─── */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem; /* extra space for badge overhang */
+  }
+  .about-image-wrap {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .about-badge {
+    right: -0.5rem;
+    bottom: -1.25rem;
+    padding: 1rem 1.25rem;
+  }
+  .about-badge .badge-company {
+    font-size: 1.375rem;
+  }
+  .about-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    margin-top: 1.25rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .stats-grid .stat-card:last-child {
+    grid-column: 1 / -1;
+  }
+  .stat-card .stat-val { font-size: 2.5rem; }
+}
+
+/* ─── Work Section – Mobile ─── */
+@media (max-width: 768px) {
+  .work-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .work-header-desc {
+    font-size: 0.9375rem;
+  }
+  .work-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .project-list {
+    gap: 0.5rem;
+  }
+  .project-btn {
+    padding: 1rem;
+  }
+  .project-btn .proj-title {
+    font-size: 1.125rem;
+  }
+  /* Stack preview below list on mobile */
+  .project-preview {
+    min-height: 300px;
+    border-radius: 1.25rem;
+  }
+  .project-preview-content {
+    padding: 1.5rem;
+  }
+  .project-preview-content h3 {
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+  }
+  .project-preview-content p {
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+  }
+}
+
+/* ─── Collab Marquee – Mobile ─── */
+@media (max-width: 768px) {
+  .collab-strip { padding: 2.5rem 0; }
+  .collab-label { padding: 0 1.25rem; margin-bottom: 1.5rem; }
+  .marquee-item {
+    min-width: 190px;
+    padding: 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ─── Connect Section – Mobile ─── */
+@media (max-width: 768px) {
+  .connect-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .social-links {
+    gap: 0.625rem;
+    margin-top: 1.5rem;
+  }
+  .social-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+  .contact-form {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+}
+
+/* ─── Modal – Mobile ─── */
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 1rem 0.75rem;
+    padding-top: 1rem;
+  }
+  .modal-box {
+    border-radius: 1.25rem;
+  }
+  .modal-header {
+    padding: 1.5rem 1.25rem;
+    padding-right: 4rem; /* room for close btn */
+  }
+  .modal-close {
+    top: 1rem; right: 1rem;
+    width: 2.25rem; height: 2.25rem;
+  }
+  .modal-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+  .gallery-tile-info .tile-title {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── General section padding on mobile ─── */
+@media (max-width: 768px) {
+  section {
+    padding: 3.5rem 1.25rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+}
+
+/* ─── Touch-friendly tap targets ─── */
+@media (max-width: 768px) {
+  .project-btn,
+  .social-btn,
+  .gallery-tile,
+  .stat-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Disable hover lifts on touch (saves battery & avoids stuck states) */
+  .hover-lift:hover,
+  .stat-card:hover,
+  .social-btn:hover,
+  .project-btn:hover {
+    transform: none;
+  }
+}
+
+/* ─── Fix font sizes on very small screens ─── */
+@media (max-width: 360px) {
+  .hero-title { font-size: 3rem; }
+  .nav-logo   { font-size: 1rem; }
+}
