@@ -11,62 +11,128 @@
 const projects = [
   {
     title: "LOGO DESIGN",
-    image: "assets/aashik-product-frames.jpg",
+    image: "images/persons.png",
     tag: "Logo",
     brief: "Handcrafted Ashta Mangala, Bajra frames, desk organizers, LED frames, and functional gifting products designed for meaning and manufacture.",
+     images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "Branding",
     image: "assets/aashik-logofolio.jpg",
     tag: "Identity systems",
     brief: "Distinctive marks, brand systems, and visual languages built for recognition across digital, print, and market touchpoints.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "SOCIAL MEDIA CREATIVES",
     image: "assets/aashik-desk-organizer.jpg",
     tag: "Social Media Posts",
     brief: "Scroll-stopping campaign systems, launch visuals, festive creatives, and conversion-focused social design.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "COMPANY PROFILE",
     image: "assets/eca17fec-727f-4654-aedc-b29315b67bac.png",
     tag: "Gifting Products",
     brief: "Premium profile documents that turn capability, culture, and proof into a polished client-facing narrative.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "PRODUCT DESIGN",
     image: "assets/aashik-led-jali.jpg",
     tag: "Prints",
     brief: "Elegant animated invitations with mood, pacing, typography, and cultural detail for memorable celebrations.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "PRINT DESIGN",
     image: "assets/aashik-logofolio.jpg",
     tag: "3D Print",
     brief: "Brochures, flyers, posters, and print-ready assets composed with editorial hierarchy and production precision.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "3D PRINT DESIGN",
     image: "assets/eca17fec-727f-4654-aedc-b29315b67bac.png",
     tag: "3D Print Design",
     brief: "Premium profile documents that turn capability, culture, and proof into a polished client-facing narrative.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
   {
     title: "VIDEO",
     image: "assets/aashik-led-jali.jpg",
     tag: "Video",
     brief: "Campaign key visuals, offer creatives, brand announcements, and sales materials for focused market impact.",
+    images: [
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png",
+      "images/logo1.png"
+    ],
   },
 ];
 
 const collaborations = [
-  "Masta Kala Crafts Nepal",
-  "Neo Money Transfer",
-  "TerraPay",
-  "Wedding Creative Projects",
-  "Freelance Brand Clients",
+  {
+    image: "images/logos1.png",
+  },
+ {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
+  {
+    image: "images/logos1.png",
+  },
 ];
-
 /* ─── Spotlight cursor ─── */
 function initSpotlight() {
   const el = document.getElementById("spotlight");
@@ -135,11 +201,15 @@ function buildMarquee() {
   if (!track) return;
 
   const doubled = [...collaborations, ...collaborations];
-  track.innerHTML = doubled
-    .map(
-      (name) => `<div class="marquee-item">${name}</div>`
-    )
-    .join("");
+ track.innerHTML = doubled
+  .map(
+    (item) => `
+      <div class="marquee-item">
+        <img src="${item.image}" alt="logo" />
+      </div>
+    `
+  )
+  .join("");
 }
 
 /* ─── Project switcher & preview ─── */
@@ -212,28 +282,17 @@ function openModal(projectIndex) {
 
   modalTitle.textContent = projects[projectIndex].title;
 
-  gallery.innerHTML = projects
-    .map(
-      (p, i) => `
-      <div
-        class="gallery-tile ${i === projectIndex ? "selected" : ""}"
-        data-index="${i}"
-        role="button"
-        tabindex="0"
-        aria-label="View ${p.title}"
-      >
+  gallery.innerHTML = projects[projectIndex].images
+  .map(
+    (img) => `
+      <div class="gallery-tile">
         <div class="gallery-tile-img">
-          <img src="${p.image}" alt="${p.title}" loading="lazy" />
-          <div class="gallery-tile-overlay"></div>
-          <span class="gallery-tile-num">0${i + 1}</span>
-          <div class="gallery-tile-info">
-            <div class="tile-title">${p.title}</div>
-            <div class="tile-tag">${p.tag}</div>
-          </div>
+          <img src="${img}" alt="" loading="lazy" />
         </div>
-      </div>`
-    )
-    .join("");
+      </div>
+    `
+  )
+  .join("");
 
   gallery.querySelectorAll(".gallery-tile").forEach((tile) => {
     tile.addEventListener("click", () => {
