@@ -11,7 +11,7 @@
 const projects = [
   {
     title: "LOGO DESIGN",
-    image: "images/persons.png",
+    image: "persons.png",
     tag: "Logo",
     brief: "Handcrafted Ashta Mangala, Bajra frames, desk organizers, LED frames, and functional gifting products designed for meaning and manufacture.",
      images: [
@@ -39,10 +39,10 @@ const projects = [
     tag: "Social Media Posts",
     brief: "Scroll-stopping campaign systems, launch visuals, festive creatives, and conversion-focused social design.",
     images: [
-      "images/logo1.png",
-      "images/logo1.png",
-      "images/logo1.png",
-      "images/logo1.png"
+      "logo1.png",
+      "logo1.png",
+      "logo1.png",
+      "logo1.png"
     ],
   },
   {
@@ -109,28 +109,28 @@ const projects = [
 
 const collaborations = [
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
  {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
   {
-    image: "images/logos1.png",
+    image: "logos1.png",
   },
 ];
 /* ─── Spotlight cursor ─── */
