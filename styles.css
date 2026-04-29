@@ -271,7 +271,7 @@ h1, h2, h3, h4 {
 
 .hero-visual {
   position: relative;
-  min-height: 460px;
+  min-height: 760px;
 }
 
 .hero-image-wrap {
@@ -356,7 +356,7 @@ section { padding: 6rem 2rem; }
 
 .section-label {
   font-size: 0.75rem;
-  font-weight: 900;
+  font-weight: 860;
   text-transform: uppercase;
   color: var(--primary);
   letter-spacing: 0.12em;
@@ -365,8 +365,8 @@ section { padding: 6rem 2rem; }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 6rem);
-  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-weight: 860;
   text-transform: uppercase;
   line-height: 0.92;
 }
@@ -473,7 +473,7 @@ section { padding: 6rem 2rem; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--charcoal);
-  padding: 4rem 0;
+  padding: 2rem 0;
   overflow: hidden;
 }
 
@@ -483,37 +483,29 @@ section { padding: 6rem 2rem; }
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
   letter-spacing: 0.12em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   padding: 0 2rem;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  gap: 1rem;
+  gap: 0;
+  align-items: center;
 }
 
 .marquee-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.05);
-  border-radius: 1rem;
-  padding: 2rem;
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
-  transition: all 0.25s;
-  white-space: nowrap;
+  margin-right: 30px; /* controls spacing between logos */
 }
-.marquee-item:hover {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border-color: transparent;
+
+.marquee-item img {
+  width: 160px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ─── Work Section ─── */
